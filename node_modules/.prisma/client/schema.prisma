@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model tbl_filme {
+  id                Int       @id @unique(map: "id") @default(autoincrement())
+  nome              String    @db.VarChar(80)
+  sinopse           String    @db.Text
+  duracao           DateTime  @db.Time(0)
+  data_lancamento   DateTime  @db.Date
+  data_relancamento DateTime? @db.Date
+  foto_capa         String    @db.VarChar(300)
+  valor_unitario    Float?    @db.Float
+}
